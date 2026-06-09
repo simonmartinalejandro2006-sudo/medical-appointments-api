@@ -1,8 +1,5 @@
 const appointmentService = require('../services/appointmentService');
 
-/**
- * Crear turno
- */
 const createAppointment = async (req, res) => {
   try {
     const appointment = await appointmentService.createAppointment({
@@ -22,9 +19,6 @@ const createAppointment = async (req, res) => {
   }
 };
 
-/**
- * Obtener mis turnos
- */
 const getMyAppointments = async (req, res) => {
   try {
     const appointments =
@@ -45,9 +39,7 @@ const getMyAppointments = async (req, res) => {
   }
 };
 
-/**
- * Obtener todos los turnos (admin)
- */
+
 const getAllAppointments = async (req, res) => {
   try {
     const appointments =
@@ -68,9 +60,7 @@ const getAllAppointments = async (req, res) => {
   }
 };
 
-/**
- * Cancelar turno
- */
+
 const cancelAppointment = async (req, res) => {
   try {
     const appointment =
@@ -90,9 +80,7 @@ const cancelAppointment = async (req, res) => {
   }
 };
 
-/**
- * Cambiar estado
- */
+
 const updateAppointmentStatus = async (req, res) => {
   try {
     const appointment =
