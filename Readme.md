@@ -12,7 +12,7 @@ Modificación de estado de turnos.
 Cancelación de turnos.
 Control de agenda para evitar superposición de horarios.
 Filtros por profesional, especialidad, fecha y estado.
----------------------------------
+
 Tecnologías
 Node.js
 Express
@@ -22,7 +22,7 @@ JWT
 bcryptjs
 Jest
 Supertest
----------------------------------
+
 Instalación
 npm install
 npm run dev
