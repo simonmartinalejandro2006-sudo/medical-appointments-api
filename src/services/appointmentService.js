@@ -1,8 +1,6 @@
 const Appointment = require('../models/Appointment');
 
-/**
- * Crear turno
- */
+
 const createAppointment = async (appointmentData) => {
   const {
     fecha,
@@ -11,7 +9,6 @@ const createAppointment = async (appointmentData) => {
     profesional
   } = appointmentData;
 
-  // Verificar si existe un turno solapado
   const existingAppointment = await Appointment.findOne({
     fecha,
     profesional,
@@ -35,18 +32,14 @@ const createAppointment = async (appointmentData) => {
   return Appointment.create(appointmentData);
 };
 
-/**
- * Obtener todos los turnos
- */
+
 const getAllAppointments = async (filters = {}) => {
   return Appointment.find(filters)
     .populate('paciente', 'name email')
     .sort({ fecha: 1 });
 };
 
-/**
- * Obtener turnos de un paciente
- */
+
 const getMyAppointments = async (patientId) => {
   return Appointment.find({
     paciente: patientId
@@ -55,9 +48,7 @@ const getMyAppointments = async (patientId) => {
     .sort({ fecha: -1 });
 };
 
-/**
- * Cancelar turno
- */
+
 const cancelAppointment = async (appointmentId) => {
   return Appointment.findByIdAndUpdate(
     appointmentId,
@@ -70,9 +61,7 @@ const cancelAppointment = async (appointmentId) => {
   );
 };
 
-/**
- * Cambiar estado
- */
+
 const updateAppointmentStatus = async (
   appointmentId,
   status
