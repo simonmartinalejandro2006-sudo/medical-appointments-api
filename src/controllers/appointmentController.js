@@ -39,7 +39,6 @@ const getMyAppointments = async (req, res) => {
   }
 };
 
-
 const getAllAppointments = async (req, res) => {
   try {
     const appointments =
@@ -60,6 +59,25 @@ const getAllAppointments = async (req, res) => {
   }
 };
 
+const updateAppointment = async (req, res) => {
+  try {
+    const appointment =
+      await appointmentService.updateAppointment(
+        req.params.id,
+        req.body
+      );
+
+    res.status(200).json({
+      success: true,
+      appointment
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
 
 const cancelAppointment = async (req, res) => {
   try {
@@ -79,7 +97,6 @@ const cancelAppointment = async (req, res) => {
     });
   }
 };
-
 
 const updateAppointmentStatus = async (req, res) => {
   try {
@@ -105,6 +122,7 @@ module.exports = {
   createAppointment,
   getMyAppointments,
   getAllAppointments,
+  updateAppointment,
   cancelAppointment,
   updateAppointmentStatus
 };

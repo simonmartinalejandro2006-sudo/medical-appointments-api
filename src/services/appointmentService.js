@@ -1,6 +1,5 @@
 const Appointment = require('../models/Appointment');
 
-
 const createAppointment = async (appointmentData) => {
   const {
     fecha,
@@ -32,13 +31,11 @@ const createAppointment = async (appointmentData) => {
   return Appointment.create(appointmentData);
 };
 
-
 const getAllAppointments = async (filters = {}) => {
   return Appointment.find(filters)
     .populate('paciente', 'name email')
     .sort({ fecha: 1 });
 };
-
 
 const getMyAppointments = async (patientId) => {
   return Appointment.find({
@@ -48,6 +45,19 @@ const getMyAppointments = async (patientId) => {
     .sort({ fecha: -1 });
 };
 
+const updateAppointment = async (
+  appointmentId,
+  updateData
+) => {
+  return Appointment.findByIdAndUpdate(
+    appointmentId,
+    updateData,
+    {
+      new: true,
+      runValidators: true
+    }
+  );
+};
 
 const cancelAppointment = async (appointmentId) => {
   return Appointment.findByIdAndUpdate(
@@ -60,7 +70,6 @@ const cancelAppointment = async (appointmentId) => {
     }
   );
 };
-
 
 const updateAppointmentStatus = async (
   appointmentId,
@@ -81,6 +90,7 @@ module.exports = {
   createAppointment,
   getAllAppointments,
   getMyAppointments,
+  updateAppointment,
   cancelAppointment,
   updateAppointmentStatus
 };
