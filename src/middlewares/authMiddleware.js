@@ -2,9 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const env = require('../config/env');
 
-/**
- * Verifica que exista un JWT válido
- */
+
 const protect = async (req, res, next) => {
   try {
     let token;
@@ -45,9 +43,7 @@ const protect = async (req, res, next) => {
   }
 };
 
-/**
- * Restringe acceso según rol
- */
+
 const restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
